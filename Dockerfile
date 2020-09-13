@@ -15,8 +15,11 @@ COPY jupyterlab/start-notebook.sh /usr/local/bin/
 
 COPY sslh.conf /etc/supervisor/conf.d/
 
+COPY docker-entrypoint.py /resources/
 
 RUN \
+    chmod a+rwx /usr/local/bin/start-notebook.sh && \
+    chmod a+rwx /resources/docker-entrypoint.py && \
     # update labextensions
     cd $MY_JUPYTERLAB_DIR && \
     python -m jupyterlab.labextensions update --all && \

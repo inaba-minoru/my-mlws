@@ -22,6 +22,7 @@ c.JupyterApp.answer_yes = True
 # if base_url is not None and base_url != "/":
 #     c.ServerApp.base_url = base_url
 c.ServerApp.base_url = os.getenv("NB_PREFIX", "/")
+c.LabApp.override_static_url = os.getenv("NB_PREFIX", "") + "/static"
 
 c.FileContentsManager.delete_to_trash = False
 
